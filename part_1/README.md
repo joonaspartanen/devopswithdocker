@@ -125,3 +125,10 @@ CMD [ "./script.sh" ]
 Build the Dockerfile with ```docker build -t curler .```.
 
 Run it with ```docker run -it curler```.
+
+## 1.8
+
+First create the logs.txt in the host folder with ```touch logs.txt```.
+
+Now, run the container and bind the logs.txt with the command ```docker run -v $(pwd)/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise```
+ 
