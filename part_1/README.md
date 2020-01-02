@@ -87,3 +87,20 @@ Searching..
 <p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
 </body></html>
 ```
+
+## 1.6
+
+Create the Dockerfile with the following content:
+
+```
+FROM devopsdockeruh/overwrite_cmd_exercise
+
+ENTRYPOINT ["./start.sh"]
+CMD ["-c"]
+```
+
+Then run ```docker build .``` in the same directory.
+
+Tag/rename the Dockerfile with ```docker tag ac001fbf27ff docker-clock```.
+
+The clock can now be started with ```docker run docker-clock```.
