@@ -104,3 +104,24 @@ Then run ```docker build .``` in the same directory.
 Tag/rename the Dockerfile with ```docker tag ac001fbf27ff docker-clock```.
 
 The clock can now be started with ```docker run docker-clock```.
+
+## 1.7
+
+Create the script file as script.sh and the Dockerfile as follows:
+
+```
+FROM ubuntu
+
+WORKDIR /mydir 
+
+RUN apt-get update
+RUN apt-get install -y curl
+COPY script.sh .
+RUN chmod a+rx script.sh
+
+CMD [ "./script.sh" ]
+```
+
+Build the Dockerfile with ```docker build -t curler .```.
+
+Run it with ```docker run -it curler```.
