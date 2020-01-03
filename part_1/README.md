@@ -170,6 +170,10 @@ Now, run both containers with the same commands as in 1.10 and 1.11.
 
 ## 1.13
 
-Create the [Dockerfile]() and build it with ``` docker build -t spring .```.
+Create the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.13/Dockerfile) and build it with ``` docker build -t spring .```.
 
 Then run the container with ```docker run -p 8080:8080 spring```.
+
+## 1.14
+
+Create the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.14/Dockerfile) and build it with ```docker build -t ruby-example .```.
