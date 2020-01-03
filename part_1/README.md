@@ -151,3 +151,13 @@ Build the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker/blob/m
 Now, run the container with ```docker run -p 5000:5000 frontend-example```.
 
 The frontend can now be accessed at ```http://localhost:5000```.
+
+## 1.11
+
+First, build the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.11/Dockerfile) with ```docker build -t backend-example .```.
+
+Before the first run, create the local logs file with ```touch logs.txt```. 
+
+Now, run the container with ```docker run -v $(pwd)/logs.txt:/logs.txt -p 8000:8000 backend-example```.
+
+The frontend can now be accessed at ```http://localhost:8000```.
