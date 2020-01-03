@@ -167,3 +167,9 @@ The frontend can now be accessed at ```http://localhost:8000```.
 Modify the Dockerfile entrypoints to be ```ENTRYPOINT API_URL=http://localhost:8000 npm start``` for the [frontend](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.10/Dockerfile) and ```ENTRYPOINT FRONT_URL=http://localhost:5000 npm start``` for the [backend](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.11/Dockerfile).
 
 Now, run both containers with the same commands as in 1.10 and 1.11.
+
+## 1.13
+
+Create the [Dockerfile]() and build it with ``` docker build -t spring .```.
+
+Then run the container with ```docker run -p 8080:8080 spring```.
