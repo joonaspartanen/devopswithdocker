@@ -132,3 +132,14 @@ First create the logs.txt in the host folder with ```touch logs.txt```.
 
 Now, run the container and bind the logs.txt with the command ```docker run -v $(pwd)/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise```
  
+## 1.9
+
+Run ```docker run -d -p 80 devopsdockeruh/ports_exercise```.
+
+Now ```docker port 0f30``` outputs:
+
+```
+80/tcp -> 0.0.0.0:32768
+```
+
+The web service can be accessed at ```http://localhost:32768/```.
