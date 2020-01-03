@@ -90,7 +90,7 @@ Searching..
 
 ## 1.6
 
-Create the Dockerfile with the following content:
+Create the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.6/Dockerfile) with the following content:
 
 ```
 FROM devopsdockeruh/overwrite_cmd_exercise
@@ -107,7 +107,7 @@ The clock can now be started with ```docker run docker-clock```.
 
 ## 1.7
 
-Create the script file as script.sh and the Dockerfile as follows:
+Create the script file as [script.sh](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.7/script.sh) and the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.7/Dockerfile) as follows:
 
 ```
 FROM ubuntu
@@ -146,7 +146,7 @@ The web service can be accessed at ```http://localhost:32768/```.
 
 ## 1.10
 
-Build the Dockerfile with ```docker build -t frontend-example .```.
+Build the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.10/Dockerfile) with ```docker build -t frontend-example .```.
 
 Now, run the container with ```docker run -p 5000:5000 frontend-example```.
 
