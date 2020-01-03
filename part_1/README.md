@@ -156,8 +156,14 @@ The frontend can now be accessed at ```http://localhost:5000```.
 
 First, build the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.11/Dockerfile) with ```docker build -t backend-example .```.
 
-Before the first run, create the local logs file with ```touch logs.txt```. 
+Before the first run, create the local [logs file](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.11/logs.txt) with ```touch logs.txt```. 
 
 Now, run the container with ```docker run -v $(pwd)/logs.txt:/usr/src/app/logs.txt -p 8000:8000 backend-example```.
 
 The frontend can now be accessed at ```http://localhost:8000```.
+
+## 1.12
+
+Modify the Dockerfile entrypoints to be ```ENTRYPOINT API_URL=http://localhost:8000 npm start``` for the [frontend](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.10/Dockerfile) and ```ENTRYPOINT FRONT_URL=http://localhost:5000 npm start``` for the [backend](https://github.com/joonaspartanen/devopswithdocker/blob/master/part_1/1.11/Dockerfile).
+
+Now, run both containers with the same commands as in 1.10 and 1.11.

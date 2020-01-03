@@ -11,4 +11,8 @@ COPY ./backend-example-docker .
 
 EXPOSE 8000
 
-ENTRYPOINT npm start
+# 1.11 version
+#ENTRYPOINT npm start
+
+# 1.12 version
+ENTRYPOINT FRONT_URL=http://localhost:5000 npm start

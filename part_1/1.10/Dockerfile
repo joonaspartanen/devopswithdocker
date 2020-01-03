@@ -11,4 +11,8 @@ COPY ./frontend-example-docker .
 
 EXPOSE 5000
 
-ENTRYPOINT npm start
+# 1.10 version
+#ENTRYPOINT npm start
+
+# 1.12 version
+ENTRYPOINT API_URL=http://localhost:8000 npm start
