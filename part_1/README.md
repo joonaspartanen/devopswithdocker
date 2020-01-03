@@ -143,3 +143,11 @@ Now ```docker port 0f30``` outputs:
 ```
 
 The web service can be accessed at ```http://localhost:32768/```.
+
+## 1.10
+
+Build the Dockerfile with ```docker build -t frontend-example .```.
+
+Now, run the container with ```docker run -p 5000:5000 frontend-example```.
+
+The frontend can now be accessed at ```http://localhost:5000```.
