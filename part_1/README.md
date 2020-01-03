@@ -158,6 +158,6 @@ First, build the [Dockerfile](https://github.com/joonaspartanen/devopswithdocker
 
 Before the first run, create the local logs file with ```touch logs.txt```. 
 
-Now, run the container with ```docker run -v $(pwd)/logs.txt:/logs.txt -p 8000:8000 backend-example```.
+Now, run the container with ```docker run -v $(pwd)/logs.txt:/usr/src/app/logs.txt -p 8000:8000 backend-example```.
 
 The frontend can now be accessed at ```http://localhost:8000```.
