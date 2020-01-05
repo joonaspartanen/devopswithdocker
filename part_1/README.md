@@ -194,16 +194,6 @@ Skipped for the moment.
 
 ## 2.1
 
-Dockerfile:
-
-```
-FROM devopsdockeruh/first_volume_exercise
-
-WORKDIR /usr/app
-
-CMD node index.js
-```
-
 docker-compose.yml:
 
 ```
@@ -215,4 +205,28 @@ services:
     build: .
     volumes:
       - ./logs.txt:/usr/app/logs.txt
+```
+
+Dockerfile:
+
+```
+FROM devopsdockeruh/first_volume_exercise
+
+WORKDIR /usr/app
+
+CMD node index.js
+```
+
+## 2.2
+
+docker-compose.yml:
+
+```
+version: '3'
+
+services:
+  ports_exercise:
+    image: devopsdockeruh/ports_exercise
+    ports:
+      - 80:80
 ```
