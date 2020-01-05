@@ -182,4 +182,12 @@ Then run the container with ```docker run -p 3000:3000 ruby-example```.
 
 ## 1.15
 
-Link to the project in Docker Hub: https://hub.docker.com/repository/docker/partanenjoonas/react-country-app
+Link to the project on Docker Hub: https://hub.docker.com/repository/docker/partanenjoonas/react-country-app
+
+## 1.16
+
+Link to the deployed app on Heroku: https://docker-example-050120.herokuapp.com/
+
+## 1.17
+
+Skipped for the moment.
