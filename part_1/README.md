@@ -191,3 +191,28 @@ Link to the deployed app on Heroku: https://docker-example-050120.herokuapp.com/
 ## 1.17
 
 Skipped for the moment.
+
+## 2.1
+
+Dockerfile:
+
+```
+FROM devopsdockeruh/first_volume_exercise
+
+WORKDIR /usr/app
+
+CMD node index.js
+```
+
+docker-compose.yml:
+
+```
+version: '3'
+
+services:
+  first-volume-exercise:
+    image: devopsdockeruh/first_volume_exercise
+    build: .
+    volumes:
+      - ./logs.txt:/usr/app/logs.txt
+```
