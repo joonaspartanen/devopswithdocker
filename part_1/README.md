@@ -230,3 +230,26 @@ services:
     ports:
       - 80:80
 ```
+## 2.3
+
+docker-compose.yml:
+
+```
+version: '3'
+
+services:
+  backend:
+    image: backend-example
+    volumes:
+      - ./logs.txt:/usr/src/app/logs.txt
+    ports:
+      - 8000:8000
+    environment:
+      - FRONT_URL=http://localhost:5000
+  frontend:
+    image: frontend-example
+    ports:
+      - 5000:5000
+    environment:
+      - API_URL=http://localhost:8000
+``'
