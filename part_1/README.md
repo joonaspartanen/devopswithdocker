@@ -252,4 +252,8 @@ services:
       - 5000:5000
     environment:
       - API_URL=http://localhost:8000
-``'
+```
+
+## 2.4
+
+Run the container with ```docker-compose up -d --scale compute=3```.
