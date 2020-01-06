@@ -81,3 +81,25 @@ Command to run the container: ```docker run -it -v $(pwd):/app yle-dl https://ar
 [Frontend Dockerfile](https://github.com/joonaspartanen/devopswithdocker/tree/master/part_3/3.3/frontend/Dockerfile)
 
 [Backend Dockerfile](https://github.com/joonaspartanen/devopswithdocker/tree/master/part_3/3.3/backend/Dockerfile)
+
+## 3.4
+
+Image sizes before the exercise (using ubuntu:16.04):
+
+```
+REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE  
+frontend-sec                                    latest              696e75068bf9        16 minutes ago      429MB 
+backend-sec                                     latest              359eb2f01881        16 minutes ago      333MB
+``'
+
+Final image sizes:
+
+```
+REPOSITORY                                      TAG                 IMAGE ID            CREATED              SIZE  
+backend                                         alpine              3fbbc11a7053        About a minute ago   217MB 
+frontend                                        alpine              eda0327f9db1        3 minutes ago        313MB 
+```
+
+[Frontend Dockerfile](https://github.com/joonaspartanen/devopswithdocker/tree/master/part_3/3.4/frontend/Dockerfile)
+
+[Backend Dockerfile](https://github.com/joonaspartanen/devopswithdocker/tree/master/part_3/3.4/backend/Dockerfile)
