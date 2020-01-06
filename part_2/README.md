@@ -130,3 +130,72 @@ services:
       POSTGRES_PASSWORD: example
       POSTGRES_USER: postgres
 ```
+
+## 2.7
+
+Pending
+
+## 2.8
+
+docker-compose.yml:
+
+```
+version: '3.5'
+
+services:
+  backend:
+    image: backend-example
+    volumes:
+      - ./logs.txt:/usr/src/app/logs.txt
+    environment:
+      - REDIS=redis
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=example
+      - DB_HOST=db
+      - API_URL=http://localhost:8000
+    depends_on:
+      - db
+    container_name: backend
+  frontend:
+    image: frontend-example
+    container_name: frontend
+    environment:
+      - FRONT_URL=http://localhost:5000
+  redis:
+    image: redis
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: postgres
+  proxy:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+      - frontend  
+```
+
+nginx.conf:
+
+```
+events { worker_connections 1024; }
+
+http {
+  server {
+    listen 80;
+
+    location / {
+      proxy_pass http://frontend:5000/;
+    }
+
+    location /api/ {
+      proxy_pass http://backend:8000/;
+    }
+  }
+}
+```
