@@ -10,15 +10,15 @@ services:
       - DB_USERNAME=postgres
       - DB_PASSWORD=example
       - DB_HOST=db
-      - API_URL=http://localhost:8000
+      - FRONT_URL=http://localhost:5000      
     depends_on: 
       - db
     container_name: backend
   frontend:
     image: frontend-example
     container_name: frontend
-    environment: 
-      - FRONT_URL=http://localhost:5000
+    environment:
+      - API_URL=http://localhost:8000 
   redis:
     image: redis
   db:

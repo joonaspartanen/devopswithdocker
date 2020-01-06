@@ -133,7 +133,39 @@ services:
 
 ## 2.7
 
-Pending
+docker-compose.yml:
+
+```
+version: '3.5'
+
+services:
+  backend:
+    build:
+      context: https://github.com/docker-hy/ml-kurkkumopo-backend.git
+      dockerfile: Dockerfile
+    image: backend
+    ports:
+      - 5000:5000
+    volumes:
+      - model:/src/model
+  frontend:
+    build:
+      context: https://github.com/docker-hy/ml-kurkkumopo-frontend.git
+      dockerfile: Dockerfile
+    image: frontend
+    ports:
+      - 3000:3000
+  training:
+    build:
+      context: https://github.com/docker-hy/ml-kurkkumopo-training.git
+      dockerfile: Dockerfile
+    volumes:
+      - imgs:/src/imgs
+      - model:/src/model
+volumes:
+  model:
+  imgs:
+```
 
 ## 2.8
 
@@ -152,7 +184,7 @@ services:
       - DB_USERNAME=postgres
       - DB_PASSWORD=example
       - DB_HOST=db
-      - API_URL=http://localhost:8000
+      - FRONT_URL=http://localhost:5000
     depends_on:
       - db
     container_name: backend
@@ -160,7 +192,7 @@ services:
     image: frontend-example
     container_name: frontend
     environment:
-      - FRONT_URL=http://localhost:5000
+      - API_URL=http://localhost:8000
   redis:
     image: redis
   db:
@@ -199,3 +231,52 @@ http {
   }
 }
 ```
+
+## 2.9
+
+```
+version: '3.5'
+
+services:
+  backend:
+    image: backend-example
+    volumes:
+      - ./logs.txt:/usr/src/app/logs.txt
+    environment:
+      - REDIS=redis
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=example
+      - DB_HOST=db
+      - FRONT_URL=http://localhost:5000
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    container_name: backend
+  frontend:
+    image: frontend-example
+    container_name: frontend
+    ports:
+      - 5000:5000
+    environment:
+      - API_URL=http://localhost:8000
+  redis:
+    image: redis
+    volumes:
+      - ./redisdb:/data
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: postgres
+    volumes:
+      - ./database:/var/lib/postgresql/data
+volumes:
+  database:
+  redisdb:
+```
+
+## 2.10
+
+Skipped for the moment.
