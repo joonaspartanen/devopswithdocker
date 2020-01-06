@@ -1,0 +1,40 @@
+version: '3.5'
+
+services:
+  backend:
+    image: backend-example
+    volumes:
+      - ./logs.txt:/usr/src/app/logs.txt
+    environment: 
+      - REDIS=redis
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=example
+      - DB_HOST=db
+      - FRONT_URL=http://localhost:5000
+    ports: 
+      - 8000:8000
+    depends_on: 
+      - db
+    container_name: backend
+  frontend:
+    image: frontend-example
+    container_name: frontend
+    ports: 
+      - 5000:5000
+    environment: 
+      - API_URL=http://localhost:8000
+  redis:
+    image: redis
+    volumes:
+      - ./redisdb:/data
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: postgres
+    volumes:
+      - ./database:/var/lib/postgresql/data
+volumes: 
+  database:
+  redisdb:
