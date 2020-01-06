@@ -53,4 +53,25 @@ frontend                                        latest              9e00a804fdf0
 ```
 
 [Frontend Dockerfile](https://github.com/joonaspartanen/devopswithdocker/tree/master/part_3/3.1/frontend/Dockerfile)
+
 [Backend Dockerfile](https://github.com/joonaspartanen/devopswithdocker/tree/master/part_3/3.1/backend/Dockerfile)
+
+## 3.2
+
+Dockerfile:
+
+```
+FROM ubuntu:16.04
+
+ENV LC_ALL=C.UTF-8 
+
+RUN apt-get update && apt-get install -y python3-pip wget ffmpeg && \
+  pip3 install -U yle-dl && \ 
+  rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+ENTRYPOINT ["yle-dl"]
+```
+
+Command to run the container: ```docker run -it -v $(pwd):/app yle-dl https://areena.yle.fi/1-50363232```
