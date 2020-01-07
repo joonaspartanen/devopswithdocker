@@ -142,3 +142,52 @@ Compared to the exercise 3.4, the image size has gone down from 313MB to 123MB:
 REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
 frontend-ms         latest              78f918b8fe64        About a minute ago   123MB
 ```
+
+## 3.6
+
+Dockerfile before the exercise (the app from 1.15):
+
+```
+FROM ubuntu:latest
+
+WORKDIR /usr/app/
+
+RUN apt-get update && apt-get install -y curl git
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt install -y nodejs
+RUN git clone https://github.com/joonaspartanen/react_country_app /usr/app/
+RUN npm install /usr/app/
+
+EXPOSE 3000
+
+CMD npm start
+```
+
+Image size: 459MB
+
+Optimized Dockerfile:
+
+```
+FROM ubuntu:latest as build-stage
+
+WORKDIR /usr/app/
+
+RUN apt-get update && apt-get install -y curl git && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash && \
+    apt install -y nodejs && git clone https://github.com/joonaspartanen/react_country_app /usr/app/ && \
+    npm install && npm run build
+
+FROM node:alpine
+
+COPY --from=build-stage /usr/app/build ./build
+
+RUN npm install -g serve && adduser -D app && chown -R app ./build
+
+USER app
+
+EXPOSE 3000
+
+CMD ["serve", "-s", "-l", "3000", "build"]
+```
+
+After the optimization, the image size went down to 119MB.
