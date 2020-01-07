@@ -191,3 +191,60 @@ CMD ["serve", "-s", "-l", "3000", "build"]
 ```
 
 After the optimization, the image size went down to 119MB.
+
+## 3.7b
+
+### Benefits of using Docker
+
+Docker provides an answer to a common problem in software development: why doesn't a "perfectly working" app – according to the developer – work in another environment?
+
+The obscure reasons behind the situation might actually be really simple, such as a missing dependency, but they can difficult to solve. And, in any case, it will take some time.
+
+What Docker provides is a stable and portable environment that guarantees that all the pieces needed to run the app are installed when running the corresponding container.
+
+Let's focus on an example that I learned during this course. In the exercise 1.14, you are required to create a Dockerfile for [a rails project](https://github.com/docker-hy/rails-example-project). Fortunately, the project has excellent instructions:
+
+1. "*Make sure you have a JavaScript runtime such as node installed.*"
+
+Let's check it out:
+
+```
+$node -v
+v10.15.0
+```
+
+Perfect, node seems to be installed!
+
+2. "*If you do not have ruby installed*"
+
+Well, I definitely have ruby installed!
+
+```
+$ruby -v
+ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux-gnu]
+```
+
+Let's go on.
+
+3. "*run bundle install to install all dependencies specified in the Gemfile*"
+
+
+```
+$bundle install
+
+Traceback (most recent call last):
+1: from /usr/local/bin/bundle:23:in `<main>'
+/usr/local/bin/bundle:23:in `load': cannot load such file -- /usr/share/rubygems-integration/all/gems/bundler-1.16.1/exe/bundle (LoadError)
+```
+
+It's not working, and I wonder why...
+
+Well, according to the instructions, I should install "*ruby version 2.6.0 with rbenv*".
+
+Maybe now I should read instructions for rbenv and then – if everything works – get back to the configuration of the rails project. And hope for the best!
+
+If only the project had a Dockerfile, that would allow me to build a Docker container containing Ruby 2.6.0 (use the image tag to pull the right version!) with bundler already installed, my life would be much easier...
+
+This was just a simple example, but precisely for its simplicity, it tells a lot about the benefits of using Docker. If running a really simple and well documented app can cause serious problems and take lots of your precious time, imagine the situation with a more complex project.
+
+Docker makes configuring a project way easier and, as this course showcases, it's really quite simple to learn.
