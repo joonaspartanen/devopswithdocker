@@ -88,8 +88,8 @@ Image sizes before the exercise (using ubuntu:16.04):
 
 ```
 REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE  
-frontend-sec                                    latest              696e75068bf9        16 minutes ago      429MB 
 backend-sec                                     latest              359eb2f01881        16 minutes ago      333MB
+frontend-sec                                    latest              696e75068bf9        16 minutes ago      429MB 
 ```
 
 Final image sizes:
